@@ -1,0 +1,67 @@
+{% extends "updateKelas/kelas.html" %}
+
+{% block table %}
+    <div class="card-header ">
+        <form method="POST" action="{% url 'updateKelas:filterListKelas' %}">
+            {% csrf_token %}
+            <table>
+                <p>
+                    <tr>
+                        <th>Nama Matakuliah</th>
+                        <th><input type="textarea" name="cari_nama_kelas" id="cari_nama_kelas"></th>
+                        <th>Tahun</th>
+                        <th>
+                            <select name="cari_tahun" id="cari_tahun">
+                                <option value=""></option>
+                                <option value=2019>2019</option>
+                                <option value=2018>2018</option>
+                                <option value=2017>2017</option>
+                            </select>
+                        </th>
+                        <th>Term</th>
+                        <th>
+                            <select name="cari_term" id="cari_term">
+                                <option value=""></option>
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                                <option value=3>3</option>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Kode Jurusan</th>
+                        <th><input type="textarea" name="cari_jurusan" id="cari_jurusan"></th>
+                    </tr>
+                    <tr>
+                        <th><button type="Submit">CARI</button></th>
+                    </tr>
+                </p>
+            </table>
+        </form>
+    </div>
+    <div class="card-body table-full-width table-responsive">
+        <table id="dtBasicExample" class="table table-hover">
+            <thead>
+                <th>id Kuliah</th>
+                <th>kd Kelas</th>
+                <th>Tanggal</th>
+                <th>Waktu Mulai</th>
+                <th>Waktu Selesai</th>
+                <th>ts_update</th>
+            </thead>
+            <tbody>
+                {% for kelas in listKelas %}
+                <tr>
+                    <td>{{ kelas.id_kuliah }}</td>
+                    <td>{{ kelas.kd_kelas }}</td>
+                    <td>{{ kelas.tanggal }}</td>
+                    <td>{{ kelas.wkt_mulai }}</td>
+                    <td>{{ kelas.wkt_selesai }}</td>
+                    <td>{{ kelas.ts_update }}</td>
+                    <td><a class="btn btn-warning" href="{% url 'updateKelas:updateKelas' kelas.id_kuliah %}" title="">Update</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock table %}

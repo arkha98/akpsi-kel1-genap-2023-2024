@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<link href="{% static 'css/login.css' %}" rel="stylesheet" />
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title }}</title>
+</head>
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="username" name="username"/>
+            <input type="password" placeholder="password" name="password"/>
+            <button type="submit">login</button>
+        </form>
+    </div>
+</div>
+<body>
+
+</body>
+
+<script src="{% static 'js/login.js' %}"></script>
+
+</html>
+
+

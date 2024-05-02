@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block nav-link %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'kelasJadwal:listKelasJadwalSemua' %}">
+            <i class="nc-icon nc-badge"></i>
+            <p>Kelas Jadwal</p>
+        </a>
+    </li>
+    <li>
+        <a class="nav-link" href="{% url 'updateKelas:listKelasSemua' %}">
+            <i class="nc-icon nc-notes"></i>
+            <p>Kelas</p>
+        </a>
+    </li>
+    <li>
+        <a class="nav-link" href="{% url 'log:listLogHariIni' %}">
+            <i class="nc-icon nc-chart-pie-35"></i>
+            <p>Log</p>
+        </a>
+    </li>
+    <li>
+        <a class="nav-link" href="{% url 'sinkronKeSiak:sinkron' %}">
+            <i class="nc-icon nc-check-2"></i>
+            <p>Sinkron SIAK</p>
+        </a>
+    </li>
+{% endblock nav-link %}
+
+{% block content %}
+    <div class="col-md-12">
+        <div class="card card-plain table-plain-bg">
+            {% block table %}
+            {% endblock table %}
+        </div>
+    </div>
+{% endblock content %}

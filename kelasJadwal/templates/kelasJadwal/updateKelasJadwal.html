@@ -1,0 +1,40 @@
+{% extends "kelasJadwal/kelasJadwal.html" %}
+
+{% block table %}
+	<form method="POST" action="{% url 'kelasJadwal:updateKelasJadwal' %}">
+		{% csrf_token %}
+		<table>
+            <tr>
+                <td>Tanggal Mulai Buat Jadwal</td>
+                <td><input type="date" name="update_tgl_mulai_otomatis_buat_jadwal" value={{ kelas_tgl_mulai }}></td>
+            </tr>
+            <tr>
+                <td>Tanggal Berakhir Buat Jadwal</td>
+                <td><input type="date" name="update_tgl_berakhir_otomatis_buat_jadwal" value={{ kelas_tgl_berakhir }}></td>
+            </tr>
+            <tr>
+                <td>Aktif</td>
+                {% if kelas_aktif %}
+                    <td><input type="checkbox" name="update_aktif" checked></td>
+                {% else %}
+                    <td><input type="checkbox" name="update_aktif"></td>
+                {% endif %}
+                <td>{{ kelas_aktif }}</td>
+            </tr>
+            <tr><td>============</td></tr>
+            <tr>
+                <td>Kd Kelas</td>
+                <td><input type="text" name="update_kd_kelas" value={{ update_kd_kelas }} readonly></td>
+            </tr>
+            <tr>
+                <td>Hari Ke</td>
+                <td><input type="text" name="update_hari_ke" value={{ update_hari_ke }} readonly></td>
+            </tr>
+            <tr>
+                <td>Jam Mulai</td>
+                <td><input type="text" name="update_jam_mulai" value={{ update_jam_mulai }} readonly></td>
+            </tr>
+		</table>
+		<button type="Submit">Kirim</button>
+	</form>
+{% endblock table %}

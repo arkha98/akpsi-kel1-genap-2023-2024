@@ -1,0 +1,71 @@
+{% extends "updateKelas/kelas.html" %}
+
+{% block table %}
+    <div class="card-header ">
+        <form method="POST" action="{% url 'updateKelas:filterListKelas' %}">
+            {% csrf_token %}
+            <table>
+                <p>
+                    <tr>
+                        <th>Nama Matakuliah</th>
+                        <th><input type="textarea" name="cari_nama_kelas" id="cari_nama_kelas"></th>
+                        <th>Tahun</th>
+                        <th>
+                            <select name="cari_tahun" id="cari_tahun">
+                                <option value=""></option>
+                                <option value=2019>2019</option>
+                                <option value=2018>2018</option>
+                                <option value=2017>2017</option>
+                            </select>
+                        </th>
+                        <th>Term</th>
+                        <th>
+                            <select name="cari_term" id="cari_term">
+                                <option value=""></option>
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                                <option value=3>3</option>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Kode Jurusan</th>
+                        <th><input type="textarea" name="cari_jurusan" id="cari_jurusan"></th>
+                    </tr>
+                    <tr>
+                        <th><button type="Submit">CARI</button></th>
+                    </tr>
+                </p>
+            </table>
+        </form>
+    </div>
+    <div class="card-body table-full-width table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <th>Kode Kelas</th>
+                <th>Nama Matakuliah</th>
+                <th>Nama Kelas</th>
+                <th>Tahun</th>
+                <th>TERM</th>
+                <th>Kode Kurikulum</th>
+                <th>kode organisasi</th>
+                <th>Nama Dosen Koordinator</th>
+            </thead>
+            <tbody>
+                {% for kelas in listKelas %}
+                <tr>
+                    <td>{{ kelas.kd_kelas }}</td>
+                    <td>{{ kelas.nama_mata_kuliah_ind }}</td>
+                    <td>{{ kelas.nama_kelas }}</td>
+                    <td>{{ kelas.thn }}</td>
+                    <td>{{ kelas.term }}</td>
+                    <td>{{ kelas.kd_kurikulum }}</td>
+                    <td>{{ kelas.kd_org }}</td>
+                    <td>{{ kelas.nama_dosen_koordinator }}</td>
+                    <td><a class="btn btn-succsess" href="{% url 'updateKelas:listKelas' kelas.kd_kelas %}" title="">List Sesi</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock table %}

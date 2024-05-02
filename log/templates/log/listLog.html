@@ -1,0 +1,30 @@
+{% extends "log/log.html" %}
+
+{% block table %}
+    <div class="card-body table-full-width table-responsive">
+        <table id="dtBasicExample" class="table table-hover">
+            <thead>
+                <th>Mac Address</th>
+                <th>NPM</th>
+                <th>Nama</th>
+                <th>Waktu Tap</th>
+                <th>Waktu Import</th>
+                <th>Kode Organisasi</th>
+                <th>Tipe Perangkat</th>
+            </thead>
+            <tbody>
+                {% for log in listLog %}
+                <tr>
+                    <td>{{ log.mac_address }}</td>
+                    <td>{{ log.no_identitas }}</td>
+                    <td>{{ log.nama }}</td>
+                    <td>{{ log.ts_presensi_device }}</td>
+                    <td>{{ log.ts_import }}</td>
+                    <td>{{ log.kd_org }}</td>
+                    <td>{{ log.tipe_perangkat }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock table %}

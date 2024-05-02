@@ -1,0 +1,73 @@
+{% extends "kelasJadwal/kelasJadwal.html" %}
+
+{% block table %}
+    <div class="card-header ">
+        <form method="POST" action="{% url 'kelasJadwal:filterKelasJadwal' %}">
+            {% csrf_token %}
+            <table>
+                <p>
+                    <tr>
+                        <th>Nama Matakuliah</th>
+                        <th><input type="textarea" name="cari_nama_kelas" id="cari_nama_kelas"></th>
+                        <th>Tahun</th>
+                        <th>
+                            <select name="cari_tahun" id="cari_tahun">
+                                <option value=""></option>
+                                <option value=2019>2019</option>
+                                <option value=2018>2018</option>
+                                <option value=2017>2017</option>
+                            </select>
+                        </th>
+                        <th>Term</th>
+                        <th>
+                            <select name="cari_term" id="cari_term">
+                                <option value=""></option>
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                                <option value=3>3</option>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th><button type="Submit">CARI</button></th>
+                    </tr>
+                </p>
+            </table>
+        </form>
+    </div>
+    <div class="card-body table-full-width table-responsive">
+        <table id="dtBasicExample" class="table table-hover">
+            <thead>
+                <th>kd Kelas</th>
+                <th>Nama MK</th>
+                <th>Nama Kelas</th>
+                <th>Nama Hari</th>
+                <th>Tgl Mulai Otomatis</th>
+                <th>Tgl Berakhir Otomatis</th>
+                <th>Kode Organisasi</th>
+                <th>Tahun</th>
+                <th>Term</th>
+                <th>Aktif</th>
+                <th>ts_update</th>
+            </thead>
+            <tbody>
+                {% for kelas in listKelasJadwal %}
+                <tr>
+                    <td>{{ kelas.kd_kelas }}</td>
+                    <td>{{ kelas.nama_mk }}</td>
+                    <td>{{ kelas.nama_kelas }}</td>
+                    <td>{{ kelas.nama_hari }}</td>
+                    <td>{{ kelas.tgl_mulai_otomatis_buat_jadwal }}</td>
+                    <td>{{ kelas.tgl_berakhir_otomatis_buat_jadwal }}</td>
+                    <td>{{ kelas.kd_org }}</td>
+                    <td>{{ kelas.thn }}</td>
+                    <td>{{ kelas.term }}</td>
+                    <td>{{ kelas.aktif }}</td>
+                    <td>{{ kelas.ts_update }}</td>
+                    <td><a class="btn btn-warning" href="{% url 'kelasJadwal:updateKelasJadwal' %}?update_kd_kelas={{ kelas.kd_kelas }}&update_hari_ke={{ kelas.hari_ke }}&update_jam_mulai_h={{ kelas.jam_mulai.hour }}&update_jam_mulai_m={{ kelas.jam_mulai.minute }}&update_jam_mulai_s={{ kelas.jam_mulai.second }}" title="">Update</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock table %}

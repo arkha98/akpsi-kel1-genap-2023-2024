@@ -1,0 +1,11 @@
+{% extends "updateKelas/kelas.html" %}
+
+{% block table %}
+	<form method="POST">
+		{% csrf_token %}
+		<table>
+			{{ kelas_form.as_table }}
+		</table>
+		<button type="Submit">Kirim</button>
+	</form>
+{% endblock table %}
