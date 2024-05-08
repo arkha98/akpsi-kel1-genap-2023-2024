@@ -1,0 +1,59 @@
+/* .FilterStuff>div{float:none;} */
+/* .dataTables_wrapper .dataTables_filter {float:right} */
+
+/* .dt-buttons {
+    width: 40%;
+    flex: auto;
+}
+
+.dataTables_length {
+    width: 30%;
+    flex: auto;
+}
+
+.dtuser_filter {
+    width: 30%;
+    flex: auto;
+} */
+
+div .dt-buttons {
+    float: left;
+}
+
+.dataTables_length {
+    float: left;
+}
+
+/* css untuk dropdown action pada datatable */
+.label-action-default-dropdown-datatable{
+    font-size: 13px;
+}
+.dropdown-item-action-datatable-edit{
+    font-size: 13px;
+}
+.dropdown-item-action-datatable-edit:hover {
+    background-color: #3e8e41;
+    color: #ddd;
+}
+.dropdown-item-action-datatable-detail{
+    font-size: 13px;
+}
+.dropdown-item-action-datatable-detail:hover {
+    background-color:blue;
+    color: #ddd;
+}
+.dropdown-item-action-datatable-delete{
+    color: red;
+    font-size: 13px;
+}
+.dropdown-item-action-datatable-delete:hover {
+    background-color:red;
+    color: #ddd;
+}
+
+/* font table */
+/* th { font-size: 13px; }
+td { font-size: 13px; } */
+table.dataTable td,th {
+    font-size: 0.7em;
+  }

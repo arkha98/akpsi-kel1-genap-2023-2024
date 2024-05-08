@@ -1,0 +1,18 @@
+<?php
+namespace App\EnumHelpers;
+
+class EnumColumnAccess
+{
+    const IS_ACTIVE = 'IS_ACTIVE';
+    const IS_READ = 'IS_READ';
+    const IS_READ_RESTRICT_USER = 'IS_READ_RESTRICT_USER';
+    const IS_CREATE = 'IS_CREATE';
+    const IS_CREATE_RESTRICT_USER = 'IS_CREATE_RESTRICT_USER';
+    const IS_UPDATE = 'IS_UPDATE';
+    const IS_UPDATE_RESTRICT_USER = 'IS_UPDATE_RESTRICT_USER';
+    const IS_DELETE = 'IS_DELETE';
+    const IS_DELETE_RESTRICT_USER = 'IS_DELETE_RESTRICT_USER';
+    const IS_DETAIL = 'IS_DETAIL';
+    const IS_DETAIL_RESTRICT_USER = 'IS_DETAIL_RESTRICT_USER';
+
+}
